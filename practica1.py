@@ -53,7 +53,7 @@ class Web_acortadora_de_URLs(webapp.webApp):
                 urls = open("urls.csv", 'a')
                 if primero == 0:
                     urls.write(",")
-                urls.write("<br><b>URL:</b><a href=" + url + ">" + url + "</a> <b>URL Acortada: </b>: <a href=" + url + ">" + link + "</a><br>")
+                urls.write("<br><b></b><a href=" + url + ">" + url + "</a> <b> --> </b>: <a href=" + url + ">" + link + "</a><br>")
                 urls.close()
             else:
                 urls = open('urls.csv', 'r')
@@ -64,7 +64,7 @@ class Web_acortadora_de_URLs(webapp.webApp):
                 urls.close()
 
                 print("link: " + link)
-            return("200 OK", "<html><body><b>URL: </b><a href=" + url + ">" + url + "</a><b> URL Acortada: </b><a href=" + url + ">" + link + "</a></body></html>")
+            return("200 OK", "<html><body><b></b><a href=" + url + ">" + url + "</a><b> --> </b><a href=" + url + ">" + link + "</a></body></html>")
 
 
         else:
