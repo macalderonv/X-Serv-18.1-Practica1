@@ -35,8 +35,8 @@ class Web_acortadora_de_URLs(webapp.webApp):
         if parsedRequest[0] == "GET":
             if parsedRequest[1] == "/":
                 return ('200 OK', '<html><body>' + form() + "<br>" +listaurls + '</html></body>')
-            elif 'localhost:1234' + parsedRequest.split(" ")[1] + '<' in urlList:
-                url = listaurls.split('>' + 'localhost:1234' + parsedRequest.split(" ")[1] + '<')[0]
+            elif "localhost:1234" + parsedRequest[1] + "<" in listaurls:
+                url = listaurls.split('>' + 'localhost:1234' + parsedRequest[1] + "<")[0]
                 url = url.split('=')[-1]
                 return('302 Found', "<html>""<head><meta http-equiv='Refresh' content=" + "3;url=" + url + "></head>""<body><h1>Te estamos redirigiendo...</h1></body>""</html>")
             else:
@@ -51,9 +51,7 @@ class Web_acortadora_de_URLs(webapp.webApp):
                 link = "localhost:1234/" + str(contador)
                 contador = contador + 1
                 urls = open("urls.csv", 'a')
-                if primero == 0:
-                    urls.write(",")
-                urls.write("<br><b></b><a href=" + url + ">" + url + "</a> <b> --> </b>: <a href=" + url + ">" + link + "</a><br>")
+                urls.write("<br><b></b><a href=" + url + ">" + url + "</a> <b> --> </b> <a href=" + url + ">" + link + "</a><br>")
                 urls.close()
             else:
                 urls = open('urls.csv', 'r')
